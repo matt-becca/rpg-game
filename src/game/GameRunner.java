@@ -1,8 +1,8 @@
 package game;
 
 
-import oop.characters.*;
-import oop.characters.Character;
+import characters.*;
+import characters.Character;
 import util.Input;
 
 public class GameRunner {
