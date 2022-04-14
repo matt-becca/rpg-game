@@ -1,6 +1,5 @@
 package game;
 
-
 import characters.*;
 import characters.Character;
 import util.Input;
@@ -17,10 +16,26 @@ public class GameRunner {
         } else if (heroChoice.equalsIgnoreCase("knight")) {
             hero = new Knight("Knight");
         }else {
-            hero = new Mage(2000, 150, "zappy boi aka Samuel Moore");
+            hero = new Mage(2000, 150, 5,"zappy boi aka Samuel Moore");
         }
 
         hero.attack();
+
+        String defenderChoice = Input.getString("Please select a Defender(Zombie/ Dragon/ UglyApe): ");
+
+        Defendable defender;
+
+        if (defenderChoice.equalsIgnoreCase("zombie")) {
+            defender = new Zombie("Zombie");
+        } else if (defenderChoice.equalsIgnoreCase("dragon")) {
+            defender = new Dragon("Dragon");
+        } else if (defenderChoice.equalsIgnoreCase("uglyape")) {
+            defender = new UglyApe("UglyApe");
+        }else {
+            defender = new DeviousAstronaut("DeviousAstronaut");
+        }
+
+        defender.defend();
 
     }
 

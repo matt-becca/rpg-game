@@ -1,15 +1,22 @@
 package characters;
 
-public abstract class Character implements Attackable {
+//import static characters.Defendable.baseDefenseDamage;
+
+public abstract class Character implements Attackable, Defendable{
 
     //    PROPERTIES ALL CHARACTERS SHARE
     protected int hp;
     protected int attackDamage = 0;
     protected int spAttackDamage = 20;
+    protected int defenseDamage = 0;
+    protected int spDefenseDamage = 20;
+    protected String name = "";
 
-    public Character(int hp, int attackDamage) {
+    public Character(int hp, int attackDamage, int denfenseDamage, String name) {
         this.hp = hp;
         this.attackDamage = attackDamage;
+        this.defenseDamage = denfenseDamage;
+        this.name = name;
     }
 
     public int getHp() {
@@ -28,12 +35,28 @@ public abstract class Character implements Attackable {
         this.attackDamage = attackDamage;
     }
 
+    public int getDefenseDamage() {
+        return defenseDamage;
+    }
+
+    public void setDefenseDamage(int defenseDamage) {
+        this.defenseDamage = defenseDamage;
+    }
+
     //    BEHAVIORS THAT ALL CHARACTERS SHARE
     public void attack() {
         if (attackDamage > baseAttackDamage) {
             System.out.println("Attacked for " + attackDamage + " damage");
         } else {
             System.out.println("Attacked for " + baseAttackDamage + " damage");
+        }
+    }
+
+    public void defend() {
+        if (defenseDamage > baseDefenseDamage) {
+            System.out.println("Defended for " + defenseDamage + " damage");
+        } else {
+            System.out.println("Defended for " + baseDefenseDamage + " damage");
         }
     }
 
