@@ -1,6 +1,6 @@
 package characters;
 
-//import static characters.Defendable.baseDefenseDamage;
+import static util.DiceRoll.DiceRolly;
 
 public abstract class Character implements Attackable, Defendable{
 
@@ -45,11 +45,17 @@ public abstract class Character implements Attackable, Defendable{
 
     //    BEHAVIORS THAT ALL CHARACTERS SHARE
     public void attack() {
-        if (attackDamage > baseAttackDamage) {
-            System.out.println("Attacked for " + attackDamage + " damage");
-        } else {
-            System.out.println("Attacked for " + baseAttackDamage + " damage");
-        }
+        int characterRoll = (int) DiceRolly();
+        //int rand = (int) (Math.random() * 6);
+        System.out.println(characterRoll);
+            if (characterRoll >= 4) {
+
+            }
+//        if (attackDamage > baseAttackDamage) {
+//            System.out.println("Attacked for " + attackDamage + " damage");
+//        } else {
+//            System.out.println("Attacked for " + baseAttackDamage + " damage");
+//        }
     }
 
     public void defend() {
