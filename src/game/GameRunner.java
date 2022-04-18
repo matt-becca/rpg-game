@@ -2,7 +2,10 @@ package game;
 
 import characters.*;
 import characters.Character;
+import util.DiceRoll;
 import util.Input;
+
+import static util.DiceRoll.DiceRolly;
 
 public class GameRunner {
 
@@ -10,7 +13,8 @@ public class GameRunner {
         String heroChoice = Input.getString("Welcome! Please select a hero(Warrior/Knight): ");
 
         Attackable hero;
-
+        // Character hero;
+        //Character opponent = new Zombie;
         if (heroChoice.equalsIgnoreCase("warrior")) {
             hero = new Warrior("Warrior");
         } else if (heroChoice.equalsIgnoreCase("knight")) {
@@ -18,8 +22,6 @@ public class GameRunner {
         }else {
             hero = new Mage(2000, 150, 5,"zappy boi aka Samuel Moore");
         }
-
-        hero.attack();
 
         String defenderChoice = Input.getString("Please select a Defender(Zombie/ Dragon/ UglyApe): ");
 
@@ -35,8 +37,21 @@ public class GameRunner {
             defender = new DeviousAstronaut("DeviousAstronaut");
         }
 
-        defender.defend();
+        do {
+            //GamePlay.takeTurn(hero, opponent);
+        } while(hero.getHp() <= 0 && opponent.getHp() > 0);
+        //hero.attack();
+        //defender.defend();
 
+        int heroRoll = DiceRoll.DiceRolly();
+        int opponentRoll = DiceRoll.DiceRolly();
+
+        if(DiceRoll.isHigherRoll(heroRoll, opponentRoll)){
+            hero.attack();
+        }
+
+//        hero.setAttacker(!hero.isAttacker());
+//        opponent.setAttacker(!opponent.isAttacker());
     }
 
 //    public static void main(String[] args) {
